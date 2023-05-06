@@ -1,0 +1,229 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "Anukul's Rest Api",
+        "version": "1.0",
+        "title": "Rest-Api using flask",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "servers": [
+        {
+            "url": "/"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Employee",
+            "description": "All the CRUD Api related to employee"
+        }
+    ],
+    "paths": {
+        "/emp": {
+            "get": {
+                "summary": "Get all the details of every Employee",
+                "tags": [
+                    "Employee"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/employee"
+                        }
+                    }
+                }
+            }
+        },
+        "/create": {
+            "post": {
+                "requestBody": {
+                    "description": "To add new employee",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/employee"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Add Empoloyee Details",
+                "tags": [
+                    "Employee"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/emp/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "Pass Employee ID to get his/her data",
+                    "type": "int"
+                }
+            ],
+            "get": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Employee Id",
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "summary": "Get Employee's Data by Id",
+                "tags": [
+                    "Employee"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/employee"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Misunderstood Request."
+                    },
+                    "404": {
+                        "description": "Failed. Book request not found."
+                    }
+                }
+            }
+        },
+        "/update": {
+            "put": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Update Employee's Detail",
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "summary": "Update Employee's Detail",
+                "tags": [
+                    "Employee"
+                ],
+                "requestBody": {
+                    "description": "Update the Employee data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/employee"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/employee"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/delete/{id}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Delete Employees data by Id",
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "summary": "Delete Employees Data",
+                "tags": [
+                    "Employee"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Misunderstood Request."
+                    },
+                    "404": {
+                        "description": "Failed. Book Request not found."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "id": {
+                "properties": {
+                    "id": {
+                        "type": "int"
+                    }
+                }
+            },
+            "employee": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "int",
+                        "format": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "format": "number"
+                    },
+                    "address": {
+                        "type": "string",
+                        "format": "string"
+                    }
+                }
+            }
+        }
+    }
+}
