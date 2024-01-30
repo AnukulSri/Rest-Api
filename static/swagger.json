@@ -18,6 +18,10 @@
         {
             "name": "Employee",
             "description": "All the CRUD Api related to employee"
+        },
+        {
+            "name": "Product",
+            "description": "All the CRUD Api related to Product"
         }
     ],
     "paths": {
@@ -222,6 +226,28 @@
                         "type": "string",
                         "format": "string"
                     }
+                }
+            },
+            "product": {
+                "type": "object",
+                "properties": {
+                    "Pid": {
+                        "type": "int",
+                        "format": "string"
+                    },
+                    "P_name": {
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "Price": {
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "qty": {
+                        "type": "string",
+                        "format": "number"
+                    }
+                   
                 }
             }
         }
