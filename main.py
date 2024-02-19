@@ -137,9 +137,6 @@ def show_Message(error=None):
 
 
 
-# class 
-
-
 
 if __name__ == '__main__': # checking for main function
    app.run() # this is to run the Flask program
