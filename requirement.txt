@@ -1,0 +1,14 @@
+# modules used-
+- app
+- mysql
+- jsonify
+- request
+- CORS
+- flask_swagger_ui
+
+framework used :
+
+- Flask
+
+# the configuration of database is done in config.py file.
+# In main.py file all the core concept is done.
